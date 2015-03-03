@@ -101,10 +101,8 @@ function labelcollapsed_cm_info_view(cm_info $cm) {
     
     $PAGE->requires->js_init_call('M.mod_labelcollapsed.init', array($cm->id));
 
-    require_once(dirname(__FILE__).'/locallib.php');
-
-    $content = labelcollapsed_get_html_content($cm);
-    $cm->set_content($content);    
+    $renderer = $PAGE->get_renderer('mod_labelcollapsed');
+    $cm->set_content($renderer->display_labelcollapsed($cm));
 }
 
 /**
